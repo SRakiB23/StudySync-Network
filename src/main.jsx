@@ -8,6 +8,7 @@ import Login from "./pages/Login/Login";
 import Register from "./pages/Registration/Registration";
 import AuthProvider from "./providers/AuthProvider";
 import { ToastContainer } from "react-toastify";
+import CreateAssignment from "./pages/CreateAssignment/CreateAssignment";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register></Register>,
+      },
+      {
+        path: "/createassignment",
+        element: <CreateAssignment></CreateAssignment>,
       },
     ],
   },
