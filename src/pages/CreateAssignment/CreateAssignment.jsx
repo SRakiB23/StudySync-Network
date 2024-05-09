@@ -40,6 +40,22 @@ function CreateAssignment() {
       email,
     };
     console.log(newAssignment);
+
+    //send data to server
+    fetch("http://localhost:3000/assignments", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newAssignment),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.insertedID) {
+          alert("Successfully Added");
+        }
+      });
   };
 
   return (
