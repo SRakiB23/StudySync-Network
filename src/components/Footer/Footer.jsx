@@ -4,8 +4,8 @@ import { HiOutlineMailOpen } from "react-icons/hi";
 
 const Footer = () => {
   return (
-    <div>
-      <footer className="footer p-10 bg-base-300 text-base-content max-w-7xl mx-auto">
+    <div className="p-10 bg-[#0E1A30] text-white">
+      <footer className="footer max-w-7xl mx-auto">
         <div>
           <div className="flex gap-1 items-center">
             {/* <img
