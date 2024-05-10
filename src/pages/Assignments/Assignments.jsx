@@ -14,6 +14,7 @@ function Assignments() {
         <div className="md:grid grid-cols-2 gap-5 lg:grid-cols-3">
           {assignments.map((assignment) => (
             <AssignmentsCard
+              key={assignment._id}
               assignment={assignment}
               assignments={assignments}
               setAssignments={setAssignments}

@@ -1,9 +1,54 @@
-import React from "react";
+import React, { useContext } from "react";
 import { DiVim } from "react-icons/di";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../providers/AuthProvider";
+import Swal from "sweetalert2";
 
-function AssignmentsCard({ assignment }) {
-  const { title, photo, description, difficulty, dueDate, _id } = assignment;
+function AssignmentsCard({ assignment, assignments, setAssignments }) {
+  const { user, displayName } = useContext(AuthContext);
+
+  const { title, photo, description, difficulty, dueDate, _id, email } =
+    assignment;
+
+  const handleDelete = (_id) => {
+    console.log(_id);
+    if (user.email === email) {
+      Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          fetch(`http://localhost:3000/assignments/${_id}`, {
+            method: "DELETE",
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              console.log(data);
+              if (data.deletedCount > 0) {
+                Swal.fire("Deleted!", "Your Arts Has Been Deleted", "Sucess");
+                const remaining = assignments.filter(
+                  (assignment) => assignment._id !== _id
+                );
+                setAssignments(remaining);
+              }
+            });
+        }
+      });
+    } else {
+      Swal.fire({
+        title: "You Are Not Authorized to Delete this Assignment!",
+        icon: "error",
+        confirmButtonColor: "#3085d6",
+        confirmButtonText: "Ok!!",
+      });
+    }
+  };
+
   return (
     <div>
       <div>
@@ -18,7 +63,6 @@ function AssignmentsCard({ assignment }) {
               <hr />
               <p>Description: {description}</p>
               <p>Difficulty: {difficulty}</p>
-              <p>Due Date: {dueDate}</p>
               <div className="flex justify-between py-4">
                 <div className="card-actions justify-center">
                   <Link to={`/assignmentdetails/${_id}`}>
@@ -33,7 +77,14 @@ function AssignmentsCard({ assignment }) {
                   {<button className="btn bg-green-600 text-lg">Update</button>}
                 </div>
                 <div className="card-actions justify-center">
-                  {<button className="btn bg-red-500 text-lg">Delete</button>}
+                  {
+                    <button
+                      onClick={() => handleDelete(_id)}
+                      className="btn bg-red-500 text-lg"
+                    >
+                      Delete
+                    </button>
+                  }
                 </div>
               </div>
             </div>
