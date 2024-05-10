@@ -74,7 +74,13 @@ function AssignmentsCard({ assignment, assignments, setAssignments }) {
                   </Link>
                 </div>
                 <div className="card-actions justify-center">
-                  {<button className="btn bg-green-600 text-lg">Update</button>}
+                  <Link to={`/updateassignment/${assignment._id}`}>
+                    {
+                      <button className="btn bg-green-600 text-lg">
+                        Update
+                      </button>
+                    }
+                  </Link>
                 </div>
                 <div className="card-actions justify-center">
                   {
