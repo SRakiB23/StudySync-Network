@@ -10,6 +10,7 @@ import AuthProvider from "./providers/AuthProvider";
 import { ToastContainer } from "react-toastify";
 import CreateAssignment from "./pages/CreateAssignment/CreateAssignment";
 import Assignments from "./pages/Assignments/Assignments";
+import AssignmentDetails from "./pages/Assignments/AssignmentDetails";
 
 const router = createBrowserRouter([
   {
@@ -36,6 +37,11 @@ const router = createBrowserRouter([
         path: "/assignments",
         element: <Assignments></Assignments>,
         loader: () => fetch("http://localhost:3000/assignments"),
+      },
+      {
+        path: "/assignmentdetails/:_id",
+        element: <AssignmentDetails></AssignmentDetails>,
+        // loader: () => fetch("http://localhost:3000/assignments"),
       },
     ],
   },

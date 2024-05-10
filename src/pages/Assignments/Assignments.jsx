@@ -11,7 +11,7 @@ function Assignments() {
     <div className="max-w-7xl mx-auto">
       <div className="">
         <h1 className="text-center font-bold text-3xl py-6">Assignment</h1>
-        <div>
+        <div className="md:grid grid-cols-2 gap-5 lg:grid-cols-3">
           {assignments.map((assignment) => (
             <AssignmentsCard
               assignment={assignment}
