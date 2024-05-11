@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const AssignmentDetails = () => {
   const { _id } = useParams();
@@ -26,7 +26,7 @@ const AssignmentDetails = () => {
     <div className="bg-sky-200">
       <div className="max-w-7xl mx-auto text-xl">
         <img src="" alt="" />
-        <h2 className="text-center font-bold text-5xl text-black bg-red-300 rounded-xl py-8 mb-4">
+        <h2 className="text-center font-bold text-5xl text-black bg-red-400 rounded-xl py-4 mb-4">
           Assignment Details
         </h2>
         {assignmentDetails && (
@@ -35,12 +35,40 @@ const AssignmentDetails = () => {
               <img src={assignmentDetails.photo} alt="" className="mx-auto" />
             </div>
             <div>
-              <p className="p-4 text-4xl font-bold">
+              <p className="p-4 text-4xl font-bold text-center">
                 {assignmentDetails.title}
               </p>
-              <p className="p-4 text-2xl">
+              <p className="p-4 text-2xl border border-black">
                 Description: {assignmentDetails.description}
               </p>
+              <div className="md:flex justify-between border border-black">
+                <p className="p-4 text-2xl">
+                  Difficulty Level:{" "}
+                  <span className="text-red-500 font-bold">
+                    {assignmentDetails.difficulty}
+                  </span>
+                </p>
+                <p className="p-4 text-2xl">
+                  Due Date:
+                  <span className="text-red-500 font-bold">
+                    {assignmentDetails.dueDate}
+                  </span>
+                </p>
+              </div>
+              <p className="p-4 text-2xl border border-black">
+                Marks:
+                <span className="text-red-500 font-bold text-2xl px-2">
+                  {assignmentDetails.marks}
+                </span>
+              </p>
+
+              <div className="text-center py-4">
+                <Link to={`/takeassignment/${_id}`}>
+                  <button className="btn bg-green-500 p-4">
+                    Take Assignment
+                  </button>
+                </Link>
+              </div>
             </div>
           </div>
         )}
