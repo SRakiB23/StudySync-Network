@@ -53,7 +53,7 @@ function CreateAssignment() {
       .then((data) => {
         console.log(data);
         if (data.insertedID) {
-          alert("Successfully Added");
+          toast.success("Successfully Added");
         }
       });
   };

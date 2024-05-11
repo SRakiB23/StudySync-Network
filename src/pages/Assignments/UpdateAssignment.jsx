@@ -51,7 +51,7 @@ function UpdateAssignment() {
     console.log(updateAssignment);
 
     fetch(`http://localhost:3000/assignments/${_id}`, {
-      method: "PUT",
+      method: "PATCH",
       headers: {
         "content-type": "application/json",
       },
