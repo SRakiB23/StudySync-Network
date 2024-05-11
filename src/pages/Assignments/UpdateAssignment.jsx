@@ -193,8 +193,8 @@ function UpdateAssignment() {
 
               <input
                 type="submit"
-                value="Add Assignment"
-                className="bg-[#4decaa] text-black btn btn-block mt-4"
+                value="Update Assignment"
+                className="bg-[#44d498] text-black btn btn-block mt-4"
               />
             </form>
           </div>

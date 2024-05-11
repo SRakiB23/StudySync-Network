@@ -12,7 +12,9 @@ const AssignmentDetails = () => {
       .then((data) => {
         setAssignmentDetails(data);
       })
-      .catch((error) => console.error("Error fetching art details:", error));
+      .catch((error) =>
+        console.error("Error fetching assignment details:", error)
+      );
   }, [_id]);
 
   return (
