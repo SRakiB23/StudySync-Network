@@ -84,7 +84,7 @@ const Navbar = () => {
             </h2>
           </Link>
         </div>
-        <div className="navbar-center hidden lg:flex">
+        <div className="navbar-center hidden md:flex">
           <ul className="menu menu-horizontal px-1">{navLinks}</ul>
         </div>
         <div>
@@ -136,7 +136,7 @@ const Navbar = () => {
         </div>
         <div className="navbar-end flex items-center">
           {user?.email ? (
-            <div className="dropdown dropdown-bottom">
+            <div className="dropdown dropdown-bottom dropdown-end">
               <div tabIndex={0} role="button">
                 <div className="avatar">
                   <div className="w-24 rounded-full">
@@ -150,7 +150,9 @@ const Navbar = () => {
                     className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
                   >
                     <li>
-                      <a>My Attempted Assignments</a>
+                      <NavLink to="/attemptedassignment">
+                        My Attempted Assignments
+                      </NavLink>
                     </li>
                     <li>
                       <button onClick={handleLogOut}>LogOut</button>
