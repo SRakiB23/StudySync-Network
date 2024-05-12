@@ -14,6 +14,7 @@ import AssignmentDetails from "./pages/Assignments/AssignmentDetails";
 import UpdateAssignment from "./pages/Assignments/UpdateAssignment";
 import TakeAssignment from "./pages/Assignments/TakeAssignment";
 import PendingAssignment from "./pages/PendingAssignment/PendingAssignment";
+import PendingAssignmentMarking from "./pages/PendingAssignment/PendingAssignmentMarking";
 
 const router = createBrowserRouter([
   {
@@ -56,6 +57,10 @@ const router = createBrowserRouter([
       {
         path: "/pendingassignment",
         element: <PendingAssignment></PendingAssignment>,
+      },
+      {
+        path: "/pendingassignmentmarking/:_id",
+        element: <PendingAssignmentMarking></PendingAssignmentMarking>,
       },
     ],
   },

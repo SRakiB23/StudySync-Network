@@ -1,17 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import Swal from "sweetalert2";
-import { toast } from "react-toastify";
 import { useParams } from "react-router-dom";
-import DatePicker from "react-datepicker";
-import { FaCalendarAlt } from "react-icons/fa";
 
 function TakeAssignment() {
   const { user, displayName } = useContext(AuthContext);
   const { _id } = useParams();
   const [assignments, setAssignments] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [dueDate, setDueDate] = useState(new Date());
 
   useEffect(() => {
     // Fetch art details using the _id parameter
@@ -42,9 +38,11 @@ function TakeAssignment() {
       description: assignments.description,
       marks: assignments.marks,
       dueDate: assignments.dueDate,
+      photo: assignments.photo,
       difficulty: assignments.difficulty,
       status: "pending",
       obtained_marks: "",
+      submitted_by: user.email,
     };
     console.log(submittedAssignment);
 

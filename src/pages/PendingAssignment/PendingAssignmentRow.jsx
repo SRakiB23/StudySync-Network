@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const PendingAssignmentRow = ({ assignment }) => {
   const { title, marks, name } = assignment;
 
@@ -7,9 +9,11 @@ const PendingAssignmentRow = ({ assignment }) => {
       <td>{marks}</td>
       <td>{name}</td>
       <th>
-        <button className="btn btn-ghost btn-xs font-bold bg-red-300 px-6">
-          Give Mark
-        </button>
+        <Link to={`/pendingassignmentmarking/${assignment._id}`}>
+          <button className="btn btn-ghost btn-xs font-bold bg-red-300 px-6">
+            Give Mark
+          </button>
+        </Link>
       </th>
     </tr>
   );

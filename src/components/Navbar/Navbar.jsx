@@ -136,26 +136,28 @@ const Navbar = () => {
         </div>
         <div className="navbar-end flex items-center">
           {user?.email ? (
-            <div className="dropdown dropdown-end flex items-center">
-              <div
-                className="relative"
-                onMouseEnter={toggleName}
-                onMouseLeave={toggleName}
-              >
-                <img
-                  alt="User avatar"
-                  src={user ? user.photoURL : "nai"}
-                  className="w-10 h-10 rounded-full cursor-pointer"
-                />
-                {showName && (
-                  <span className="md:absolute top-1 bg-white w-32 rounded-lg py-1 px-2">
-                    {user.displayName}
-                  </span>
-                )}
+            <div className="dropdown dropdown-bottom">
+              <div tabIndex={0} role="button">
+                <div className="avatar">
+                  <div className="w-24 rounded-full">
+                    <img
+                      src={user ? user.photoURL : "no user"}
+                      alt="user profile"
+                    />
+                  </div>
+                  <ul
+                    tabIndex={0}
+                    className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
+                  >
+                    <li>
+                      <a>My Attempted Assignments</a>
+                    </li>
+                    <li>
+                      <button onClick={handleLogOut}>LogOut</button>
+                    </li>
+                  </ul>
+                </div>
               </div>
-              <button onClick={handleLogOut} className="btn bg-yellow-300 ml-2">
-                LogOut
-              </button>
             </div>
           ) : (
             <Link to="/login" className="btn bg-yellow-400 ml-2 font-bold">
