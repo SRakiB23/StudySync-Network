@@ -18,13 +18,6 @@ const AssignmentDetails = () => {
   }, [_id]);
 
   return (
-    // <div
-    //   className="bg-cover bg-center min-h-screen max-w-7xl mx-auto px-4 py-8 sm:px-6 lg:px-8 opacity-90"
-    //   style={{
-    //     backgroundImage:
-    //       "url('https://i.ibb.co/SmxyrF4/circle-scatter-haikei.png')",
-    //   }}
-    // >
     <div className="bg-sky-200">
       <div className="max-w-7xl mx-auto text-xl">
         <img src="" alt="" />
