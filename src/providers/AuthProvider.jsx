@@ -24,7 +24,7 @@ const auth = getAuth(app);
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState();
   const [loading, setLoading] = useState(true);
-  console.log(user);
+  // console.log(user);
 
   //create user
   const createUser = (email, password, displayName, photoURL) => {
@@ -61,10 +61,10 @@ const AuthProvider = ({ children }) => {
     setLoading(true);
     return signOut(auth)
       .then((result) => {
-        console.log(result);
+        // console.log(result);
       })
       .catch((error) => {
-        console.log(error);
+        // console.log(error);
       });
   };
 
@@ -72,25 +72,25 @@ const AuthProvider = ({ children }) => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
       const userEmail = currentUser?.email || user?.email;
       const loggedUser = { email: userEmail };
-      console.log("user in the auth state changed");
+      // console.log("user in the auth state changed");
       setUser(currentUser);
       setLoading(false);
       //if user existes then issue a token
       if (currentUser) {
         axios
-          .post("http://localhost:3000/jwt", loggedUser, {
+          .post("https://studysync-network.vercel.app/jwt", loggedUser, {
             withCredentials: true,
           })
           .then((res) => {
-            console.log("token response:", res.data);
+            // console.log("token response:", res.data);
           });
       } else {
         axios
-          .post("http://localhost:3000/logout", loggedUser, {
+          .post("https://studysync-network.vercel.app/logout", loggedUser, {
             withCredentials: true,
           })
           .then((res) => {
-            console.log(res.data);
+            // console.log(res.data);
           });
       }
     });

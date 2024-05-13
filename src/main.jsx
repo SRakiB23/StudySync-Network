@@ -46,7 +46,7 @@ const router = createBrowserRouter([
       {
         path: "/assignments",
         element: <Assignments></Assignments>,
-        loader: () => fetch("http://localhost:3000/assignments"),
+        loader: () => fetch("https://studysync-network.vercel.app/assignments"),
       },
       {
         path: "/assignmentdetails/:_id",

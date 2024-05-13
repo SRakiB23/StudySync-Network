@@ -9,12 +9,12 @@ const FeaturedSection = () => {
 
   useEffect(() => {
     setLoading(true);
-    fetch("http://localhost:3000/featuredassignments")
+    fetch("https://studysync-network.vercel.app/featuredassignments")
       .then((response) => response.json())
       .then((data) => {
         setAssignmentDetails(data);
         setLoading(false);
-        console.log(data);
+        // console.log(data);
       })
       .catch((error) =>
         console.error("Error fetching featured Assignment details:", error)

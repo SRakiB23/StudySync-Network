@@ -13,7 +13,7 @@ function TakeAssignment() {
   useEffect(() => {
     // Fetch art details using the _id parameter
     setLoading(true);
-    fetch(`http://localhost:3000/assignments/${_id}`)
+    fetch(`https://studysync-network.vercel.app/assignments/${_id}`)
       .then((response) => response.json())
       .then((data) => {
         setAssignments(data);
@@ -48,10 +48,10 @@ function TakeAssignment() {
       obtained_marks: "",
       submitted_by: user.email,
     };
-    console.log(submittedAssignment);
+    // console.log(submittedAssignment);
 
     //send data to server
-    fetch("http://localhost:3000/submitassignments", {
+    fetch("https://studysync-network.vercel.app/submitassignments", {
       method: "POST",
       headers: {
         "content-type": "application/json",

@@ -17,13 +17,13 @@ const Register = () => {
 
   const handleRegister = (e) => {
     e.preventDefault();
-    console.log(e.currentTarget);
+    // console.log(e.currentTarget);
     const form = new FormData(e.currentTarget);
     const displayName = form.get("displayName");
     const email = form.get("email");
     const photoURL = form.get("photoURL");
     const password = form.get("password");
-    console.log(displayName, email, photoURL, password);
+    // console.log(displayName, email, photoURL, password);
 
     //PASSWORD validation
 

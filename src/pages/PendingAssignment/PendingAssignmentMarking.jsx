@@ -12,7 +12,7 @@ function PendingAssignmentMarking() {
   useEffect(() => {
     // Fetch art details using the _id parameter
     setLoading(true);
-    fetch(`http://localhost:3000/submitassignments/${_id}`)
+    fetch(`https://studysync-network.vercel.app/submitassignments/${_id}`)
       .then((response) => response.json())
       .then((data) => {
         setAssignments(data);
@@ -45,10 +45,10 @@ function PendingAssignmentMarking() {
       status: "completed",
       submitted_by: user.email,
     };
-    console.log(pendingAssingmentMarking);
+    // console.log(pendingAssingmentMarking);
 
     //send data to server
-    fetch(`http://localhost:3000/submitassignments/${_id}`, {
+    fetch(`https://studysync-network.vercel.app/submitassignments/${_id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",
@@ -57,7 +57,7 @@ function PendingAssignmentMarking() {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         if (data.modifiedCount > 0) {
           Swal.fire("Marked!!", "You Have Marked the Assignment!", "success");
         }

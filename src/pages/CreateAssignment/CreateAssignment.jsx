@@ -39,10 +39,10 @@ function CreateAssignment() {
       photo,
       email,
     };
-    console.log(newAssignment);
+    // console.log(newAssignment);
 
     //send data to server
-    fetch("http://localhost:3000/assignments", {
+    fetch("https://studysync-network.vercel.app/assignments", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -51,7 +51,7 @@ function CreateAssignment() {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         if (data.insertedID) {
           toast.success("Successfully Added");
         }

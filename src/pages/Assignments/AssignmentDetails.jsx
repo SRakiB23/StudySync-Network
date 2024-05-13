@@ -7,7 +7,7 @@ const AssignmentDetails = () => {
 
   useEffect(() => {
     // Fetch art details using the _id parameter
-    fetch(`http://localhost:3000/assignments/${_id}`)
+    fetch(`https://studysync-network.vercel.app/assignments/${_id}`)
       .then((response) => response.json())
       .then((data) => {
         setAssignmentDetails(data);

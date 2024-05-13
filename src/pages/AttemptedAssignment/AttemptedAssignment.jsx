@@ -14,7 +14,9 @@ const AttemptedAssignment = () => {
   useEffect(() => {
     if (user?.email) {
       setLoading(true);
-      fetch(`http://localhost:3000/submitassignments/submitted_by/${email}`)
+      fetch(
+        `https://studysync-network.vercel.app/submitassignments/submitted_by/${email}`
+      )
         .then((response) => response.json())
         .then((data) => {
           setAssignmentDetails(data);

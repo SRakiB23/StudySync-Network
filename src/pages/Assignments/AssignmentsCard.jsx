@@ -22,12 +22,12 @@ function AssignmentsCard({ assignment, assignments, setAssignments }) {
         confirmButtonText: "Yes, delete it!",
       }).then((result) => {
         if (result.isConfirmed) {
-          fetch(`http://localhost:3000/assignments/${_id}`, {
+          fetch(`https://studysync-network.vercel.app/assignments/${_id}`, {
             method: "DELETE",
           })
             .then((res) => res.json())
             .then((data) => {
-              console.log(data);
+              // console.log(data);
               if (data.deletedCount > 0) {
                 Swal.fire("Deleted!", "Your Arts Has Been Deleted", "Sucess");
                 const remaining = assignments.filter(

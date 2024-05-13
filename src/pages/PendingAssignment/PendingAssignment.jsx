@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import PendingAssignmentRow from "./PendingAssignmentRow";
+import { MdPending } from "react-icons/md";
 
 const PendingAssignment = () => {
   const { obtained_marks } = useParams();
@@ -11,14 +12,14 @@ const PendingAssignment = () => {
   useEffect(() => {
     setLoading(true);
     fetch(
-      `http://localhost:3000/submitassignments/obtained_marks/${obtained_marks}`,
+      `https://studysync-network.vercel.app/submitassignments/obtained_marks/${obtained_marks}`,
       { credentials: "include" }
     )
       .then((response) => response.json())
       .then((data) => {
         setAssignmentDetails(data);
         setLoading(false);
-        console.log(data);
+        // console.log(data);
       })
       .catch((error) =>
         console.error("Error fetching assignement details:", error)
@@ -55,7 +56,9 @@ const PendingAssignment = () => {
             </tbody>
           </table>
         ) : (
-          <p>No pending assignments</p>
+          <p className="text-center font-bold text-xl flex items-center gap-2">
+            <MdPending /> No pending assignments....
+          </p>
         )}
       </div>
     </div>

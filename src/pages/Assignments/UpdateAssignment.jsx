@@ -19,7 +19,7 @@ function UpdateAssignment() {
   useEffect(() => {
     // Fetch art details using the _id parameter
     setLoading(true);
-    fetch(`http://localhost:3000/assignments/${_id}`)
+    fetch(`https://studysync-network.vercel.app/assignments/${_id}`)
       .then((response) => response.json())
       .then((data) => {
         setAssignments(data);
@@ -48,9 +48,9 @@ function UpdateAssignment() {
       difficulty,
       photo,
     };
-    console.log(updateAssignment);
+    // console.log(updateAssignment);
 
-    fetch(`http://localhost:3000/assignments/${_id}`, {
+    fetch(`https://studysync-network.vercel.app/assignments/${_id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",
@@ -59,7 +59,7 @@ function UpdateAssignment() {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         if (data.modifiedCount > 0) {
           Swal.fire("Updated!", "Your Assignments Has Been Updated", "success");
         }

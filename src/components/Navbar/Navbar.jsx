@@ -11,10 +11,10 @@ const Navbar = () => {
   const handleLogOut = () => {
     logOut()
       .then((result) => {
-        console.log(result);
+        // console.log(result);
       })
       .catch((error) => {
-        console.log(error);
+        // console.log(error);
       });
   };
 
@@ -35,6 +35,23 @@ const Navbar = () => {
       </li>
       <li>
         <NavLink to="/pendingassignment">Pending Assignment</NavLink>
+      </li>
+      <li>
+        <NavLink to="/login">Login</NavLink>
+      </li>
+      <li>
+        <NavLink to="/register">Registration</NavLink>
+      </li>
+    </>
+  );
+
+  const navLinks2 = (
+    <>
+      <li>
+        <NavLink to="/">Home</NavLink>
+      </li>
+      <li>
+        <NavLink to="/assignments">Assignments</NavLink>
       </li>
       <li>
         <NavLink to="/login">Login</NavLink>
@@ -70,7 +87,7 @@ const Navbar = () => {
               tabIndex={0}
               className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
             >
-              {navLinks}
+              {user ? navLinks : navLinks2}
             </ul>
           </div>
 
@@ -85,7 +102,10 @@ const Navbar = () => {
           </div>
         </div>
         <div className="navbar-center hidden md:flex">
-          <ul className="menu menu-horizontal px-1">{navLinks}</ul>
+          <ul className="menu menu-horizontal px-1">
+            {" "}
+            {user ? navLinks : navLinks2}
+          </ul>
         </div>
         <div>
           <label className="flex cursor-pointer gap-2">
@@ -154,17 +174,20 @@ const Navbar = () => {
                         My Attempted Assignments
                       </NavLink>
                     </li>
-                    <li className="font-bold text-red-600 text-xl">
-                      <button onClick={handleLogOut}>LogOut</button>
+                    <li className="font-bold text-xl">
+                      <button className="btn bg-red-400" onClick={handleLogOut}>
+                        LogOut
+                      </button>
                     </li>
                   </ul>
                 </div>
               </div>
             </div>
           ) : (
-            <Link to="/login" className="btn bg-yellow-400 ml-2 font-bold">
-              Login
-            </Link>
+            // <Link to="/login" className="btn bg-yellow-400 ml-2 font-bold">
+            //   Login
+            // </Link>
+            ""
           )}
         </div>
       </div>

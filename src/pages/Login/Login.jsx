@@ -12,7 +12,7 @@ const Login = () => {
   const { signIn, googleLogin, gitHubLogin } = useContext(AuthContext) || {};
   const location = useLocation();
   const navigate = useNavigate();
-  console.log("login location", location);
+  // console.log("login location", location);
 
   useEffect(() => {
     AOS.init();
@@ -20,11 +20,11 @@ const Login = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    console.log(e.currentTarget);
+    // console.log(e.currentTarget);
     const form = new FormData(e.currentTarget);
     const email = form.get("email");
     const password = form.get("password");
-    console.log(email, password);
+    // console.log(email, password);
     <ToastContainer />;
 
     signIn(email, password)
