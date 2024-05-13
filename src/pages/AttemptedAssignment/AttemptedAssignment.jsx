@@ -12,17 +12,19 @@ const AttemptedAssignment = () => {
   const [assignmentDetails, setAssignmentDetails] = useState(null);
 
   useEffect(() => {
-    setLoading(true);
-    fetch(`http://localhost:3000/assignments/submitted_by/${email}`)
-      .then((response) => response.json())
-      .then((data) => {
-        setAssignmentDetails(data);
-        setLoading(false);
-      })
-      .catch((error) =>
-        console.error("Error fetching assignement details:", error)
-      );
-  }, []);
+    if (user?.email) {
+      setLoading(true);
+      fetch(`http://localhost:3000/submitassignments/submitted_by/${email}`)
+        .then((response) => response.json())
+        .then((data) => {
+          setAssignmentDetails(data);
+          setLoading(false);
+        })
+        .catch((error) =>
+          console.error("Error fetching assignement details:", error)
+        );
+    }
+  }, [user]);
 
   return (
     <div>

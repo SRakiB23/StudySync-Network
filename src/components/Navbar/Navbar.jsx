@@ -154,7 +154,7 @@ const Navbar = () => {
                         My Attempted Assignments
                       </NavLink>
                     </li>
-                    <li>
+                    <li className="font-bold text-red-600 text-xl">
                       <button onClick={handleLogOut}>LogOut</button>
                     </li>
                   </ul>

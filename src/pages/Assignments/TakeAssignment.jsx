@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import Swal from "sweetalert2";
 import { useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 
 function TakeAssignment() {
   const { user, displayName } = useContext(AuthContext);
@@ -24,6 +25,8 @@ function TakeAssignment() {
   const handleSubmit = (event) => {
     event.preventDefault();
 
+    toast.success("Assignment submitted successfully");
+
     const form = event.target;
     const email = form.email.value;
     const documentLink = form.documentLink.value;
@@ -35,6 +38,7 @@ function TakeAssignment() {
       note,
       email,
       title,
+      name: assignments.name,
       description: assignments.description,
       marks: assignments.marks,
       dueDate: assignments.dueDate,
@@ -47,8 +51,8 @@ function TakeAssignment() {
     console.log(submittedAssignment);
 
     //send data to server
-    fetch(`http://localhost:3000/assignments/${_id}`, {
-      method: "PATCH",
+    fetch("http://localhost:3000/submitassignments", {
+      method: "POST",
       headers: {
         "content-type": "application/json",
       },
@@ -56,9 +60,12 @@ function TakeAssignment() {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
-        if (data.modifiedCount > 0) {
-          Swal.fire("Submitted!", "Your Assignments is Submitted!", "success");
+        if (data.insertedID) {
+          toast.success(
+            "Submitted!",
+            "Your Assignments is Submitted!",
+            "success"
+          );
         }
       });
   };

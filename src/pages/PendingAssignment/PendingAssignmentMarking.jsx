@@ -12,13 +12,15 @@ function PendingAssignmentMarking() {
   useEffect(() => {
     // Fetch art details using the _id parameter
     setLoading(true);
-    fetch(`http://localhost:3000/assignments/${_id}`)
+    fetch(`http://localhost:3000/submitassignments/${_id}`)
       .then((response) => response.json())
       .then((data) => {
         setAssignments(data);
         setLoading(false);
       })
-      .catch((error) => console.error("Error fetching art details:", error));
+      .catch((error) =>
+        console.error("Error fetching Assignment details:", error)
+      );
   }, [_id]);
 
   const handleSubmit = (event) => {
@@ -46,7 +48,7 @@ function PendingAssignmentMarking() {
     console.log(pendingAssingmentMarking);
 
     //send data to server
-    fetch(`http://localhost:3000/assignments/${_id}`, {
+    fetch(`http://localhost:3000/submitassignments/${_id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",
@@ -63,7 +65,7 @@ function PendingAssignmentMarking() {
   };
 
   return (
-    <div>
+    <div className="bg-gradient-to-r from-green-400 to-white ...">
       <div className="max-w-7xl mx-auto">
         <h2 className="text-center font-bold text-4xl py-5">
           Assignment Marking
@@ -79,6 +81,13 @@ function PendingAssignmentMarking() {
               <span className="font-bold ml-16 border bg-slate-400 p-2">
                 {assignments?.documentLink}
               </span>
+              {assignments?.documentLink && (
+                <iframe
+                  title="Document"
+                  src={assignments?.documentLink}
+                  className="mt-2 w-full h-64"
+                />
+              )}
             </p>
             <p className="pb-4">
               Assingment Mark:

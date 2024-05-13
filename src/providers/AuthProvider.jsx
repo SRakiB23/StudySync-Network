@@ -72,6 +72,8 @@ const AuthProvider = ({ children }) => {
       console.log("user in the auth state changed");
       setUser(currentUser);
       setLoading(false);
+      //if user existes then issue a token
+      // if(currentUser)
     });
     return () => {
       unSubscribe();

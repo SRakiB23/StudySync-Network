@@ -8,7 +8,9 @@ const PendingAssignment = () => {
   const [assignmentDetails, setAssignmentDetails] = useState(null);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/assignments/obtained_marks/${obtained_marks}`)
+    fetch(
+      `http://localhost:3000/submitassignments/obtained_marks/${obtained_marks}`
+    )
       .then((response) => response.json())
       .then((data) => {
         setAssignmentDetails(data);
