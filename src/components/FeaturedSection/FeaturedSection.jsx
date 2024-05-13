@@ -1,34 +1,46 @@
 import React, { useState, useEffect } from "react";
 import FeaturedSectionCard from "./FeaturedSectionCard";
+import { useParams } from "react-router-dom";
 
 const FeaturedSection = () => {
-  const [featuredData, setFeaturedData] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  const [assignmentDetails, setAssignmentDetails] = useState(null);
 
   useEffect(() => {
-    // Fetch data from featuredata.json file
-    fetch("featuredata.json")
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        return response.json();
-      })
+    setLoading(true);
+    fetch("http://localhost:3000/featuredassignments")
+      .then((response) => response.json())
       .then((data) => {
-        // Set the fetched data to state
-        setFeaturedData(data);
+        setAssignmentDetails(data);
+        setLoading(false);
+        console.log(data);
       })
-      .catch((error) => {
-        console.error("There was a problem fetching the data:", error);
-      });
+      .catch((error) =>
+        console.error("Error fetching featured Assignment details:", error)
+      );
   }, []);
+
+  {
+    loading ? <span className="loading loading-spinner loading-lg"></span> : "";
+  }
 
   return (
     <div>
-      <h2 className="text-center font-bold text-2xl py-4">Featured</h2>
+      <h2 className="text-center font-bold text-4xl py-4">-- Featured --</h2>
       <div className="sm:w-full md:grid grid-cols-2 gap-4 lg:grid-cols-3 max-w-7xl mx-auto">
-        {featuredData.map((item, index) => (
-          <FeaturedSectionCard key={index} data={item} />
-        ))}
+        {assignmentDetails ? (
+          assignmentDetails.map((assignment) => (
+            <FeaturedSectionCard
+              key={assignment._id}
+              assignment={assignment}
+              assignmentDetails={assignmentDetails}
+              setAssignmentDetails={setAssignmentDetails}
+            ></FeaturedSectionCard>
+          ))
+        ) : (
+          <p>NO Featured Assignment</p>
+        )}
       </div>
     </div>
   );

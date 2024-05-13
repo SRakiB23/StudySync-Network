@@ -16,6 +16,7 @@ import TakeAssignment from "./pages/Assignments/TakeAssignment";
 import PendingAssignment from "./pages/PendingAssignment/PendingAssignment";
 import PendingAssignmentMarking from "./pages/PendingAssignment/PendingAssignmentMarking";
 import AttemptedAssignment from "./pages/AttemptedAssignment/AttemptedAssignment";
+import PrivateRoute from "./routes/PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -36,7 +37,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/createassignment",
-        element: <CreateAssignment></CreateAssignment>,
+        element: (
+          <PrivateRoute>
+            <CreateAssignment></CreateAssignment>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/assignments",
@@ -45,19 +50,35 @@ const router = createBrowserRouter([
       },
       {
         path: "/assignmentdetails/:_id",
-        element: <AssignmentDetails></AssignmentDetails>,
+        element: (
+          <PrivateRoute>
+            <AssignmentDetails></AssignmentDetails>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/updateassignment/:_id",
-        element: <UpdateAssignment></UpdateAssignment>,
+        element: (
+          <PrivateRoute>
+            <UpdateAssignment></UpdateAssignment>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/takeassignment/:_id",
-        element: <TakeAssignment></TakeAssignment>,
+        element: (
+          <PrivateRoute>
+            <TakeAssignment></TakeAssignment>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/pendingassignment",
-        element: <PendingAssignment></PendingAssignment>,
+        element: (
+          <PrivateRoute>
+            <PendingAssignment></PendingAssignment>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/pendingassignmentmarking/:_id",
@@ -65,7 +86,11 @@ const router = createBrowserRouter([
       },
       {
         path: "attemptedassignment",
-        element: <AttemptedAssignment></AttemptedAssignment>,
+        element: (
+          <PrivateRoute>
+            <AttemptedAssignment></AttemptedAssignment>
+          </PrivateRoute>
+        ),
       },
     ],
   },

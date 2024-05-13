@@ -4,22 +4,30 @@ import PendingAssignmentRow from "./PendingAssignmentRow";
 
 const PendingAssignment = () => {
   const { obtained_marks } = useParams();
+  const [loading, setLoading] = useState(true);
 
   const [assignmentDetails, setAssignmentDetails] = useState(null);
 
   useEffect(() => {
+    setLoading(true);
     fetch(
-      `http://localhost:3000/submitassignments/obtained_marks/${obtained_marks}`
+      `http://localhost:3000/submitassignments/obtained_marks/${obtained_marks}`,
+      { credentials: "include" }
     )
       .then((response) => response.json())
       .then((data) => {
         setAssignmentDetails(data);
+        setLoading(false);
         console.log(data);
       })
       .catch((error) =>
         console.error("Error fetching assignement details:", error)
       );
   }, []);
+
+  {
+    loading ? <span className="loading loading-spinner loading-lg"></span> : "";
+  }
 
   return (
     <div className="bg-sky-200">

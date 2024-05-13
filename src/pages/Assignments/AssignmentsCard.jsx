@@ -11,7 +11,6 @@ function AssignmentsCard({ assignment, assignments, setAssignments }) {
     assignment;
 
   const handleDelete = (_id) => {
-    console.log(_id);
     if (user.email === email) {
       Swal.fire({
         title: "Are you sure?",

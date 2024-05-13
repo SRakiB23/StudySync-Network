@@ -69,20 +69,14 @@ const Login = () => {
   };
 
   return (
-    <div
-      className="bg-cover bg-center min-h-screen max-w-7xl mx-auto flex items-center justify-center"
-      style={{
-        backgroundImage:
-          "url(https://i.ibb.co/wdTSDZY/1000-F-94844141-48ri-EEPGri0g5-Pm-Sh-TBE7-Czvjc3z-VIc-Q.jpg)",
-      }}
-    >
+    <div className="bg-[#c1e4dc]">
       <div className="hero min-h-screen bg-opacity-15 bg-white">
         <div data-aos="fade-down" data-aos-duration="1500">
-          <div className="hero-content flex-col">
+          <div className="hero-content">
             <div className="text-center lg:text-left">
               <h1 className="text-6xl font-bold">Login Now!</h1>
             </div>
-            <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-slate-200">
+            <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-[#9bcbc1]">
               <form onSubmit={handleLogin} className="card-body">
                 <div className="form-control">
                   <label className="label">

@@ -25,13 +25,16 @@ function Assignments() {
               className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
             >
               <li>
-                <a onClick={() => handleSort("Easy")}>Easy</a>
+                <a onClick={() => handleSort("easy")}>Easy</a>
               </li>
               <li>
-                <a onClick={() => handleSort("Medium")}>Medium</a>
+                <a onClick={() => handleSort("medium")}>Medium</a>
               </li>
               <li>
-                <a onClick={() => handleSort("Hard")}>Hard</a>
+                <a onClick={() => handleSort("hard")}>Hard</a>
+              </li>
+              <li>
+                <a onClick={() => handleSort("")}>All</a>
               </li>
             </ul>
           </div>

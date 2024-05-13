@@ -73,16 +73,16 @@ const Navbar = () => {
               {navLinks}
             </ul>
           </div>
-          <Link to="/">
-            {/* <img
-              className="w-48"
-              src="https://i.ibb.co/LR5rfTJ/Screenshot-2024-04-29-at-11-40-30-AM.png"
-              alt=""
-            /> */}
-            <h2 className="text-2xl font-bold text-center">
-              StudySync <br /> Network
-            </h2>
-          </Link>
+
+          <div className="animate__animated animate__backInLeft">
+            <Link to="/">
+              <img
+                className="w-52 h-16"
+                src="https://i.ibb.co/svJ6zrX/studysync-Network.png"
+                alt=""
+              />
+            </Link>
+          </div>
         </div>
         <div className="navbar-center hidden md:flex">
           <ul className="menu menu-horizontal px-1">{navLinks}</ul>
@@ -139,7 +139,7 @@ const Navbar = () => {
             <div className="dropdown dropdown-bottom dropdown-end">
               <div tabIndex={0} role="button">
                 <div className="avatar">
-                  <div className="w-24 rounded-full">
+                  <div className="w-20 rounded-full">
                     <img
                       src={user ? user.photoURL : "no user"}
                       alt="user profile"

@@ -26,6 +26,10 @@ const AttemptedAssignment = () => {
     }
   }, [user]);
 
+  {
+    loading ? <span className="loading loading-spinner loading-lg"></span> : "";
+  }
+
   return (
     <div>
       <div>

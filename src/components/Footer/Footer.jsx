@@ -8,14 +8,11 @@ const Footer = () => {
       <footer className="footer max-w-7xl mx-auto">
         <div>
           <div className="flex gap-1 items-center">
-            {/* <img
+            <img
               className="w-52"
-              src="https://i.ibb.co/LR5rfTJ/Screenshot-2024-04-29-at-11-40-30-AM.png"
+              src="https://i.ibb.co/svJ6zrX/studysync-Network.png"
               alt=""
-            /> */}
-            <h2 className="font-bold text-2xl text-center">
-              StudySync <br /> Network
-            </h2>
+            />
           </div>
           <p className="">
             Explore endless creativity and boundless inspiration <br />
@@ -79,6 +76,20 @@ const Footer = () => {
               </svg>
             </a>
           </div>
+          <p className="text-xl font-bold">Join Us!</p>
+          <form>
+            <input
+              type="text"
+              placeholder="Email address"
+              className="w-1/2 px-4 py-2 mr-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-200 focus:border-indigo-500"
+            />
+            <button
+              type="submit"
+              className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-md"
+            >
+              Subscribe
+            </button>
+          </form>
         </nav>
       </footer>
     </div>

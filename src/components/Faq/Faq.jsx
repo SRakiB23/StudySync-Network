@@ -17,28 +17,59 @@ function Faq() {
           <div className="collapse collapse-plus bg-base-200">
             <input type="radio" name="my-accordion-3" defaultChecked />
             <div className="collapse-title text-xl font-medium">
-              Click to open this one and close others
+              What is a group study website?
             </div>
             <div className="collapse-content">
-              <p>hello</p>
+              <p>
+                A group study website is an online platform designed to
+                facilitate collaborative learning among students. It allows
+                users to create or join study groups, collaborate on shared
+                documents or projects, schedule study sessions, and communicate
+                with group members through chat or video conferencing.
+              </p>
             </div>
           </div>
           <div className="collapse collapse-plus bg-base-200">
             <input type="radio" name="my-accordion-3" />
             <div className="collapse-title text-xl font-medium">
-              Click to open this one and close others
+              How can I benefit from using a group study website?
             </div>
             <div className="collapse-content">
-              <p>hello</p>
+              <p>
+                Collaboration: Work with classmates on assignments, projects, or
+                exam preparation in a collaborative and interactive environment.
+              </p>
+              <p className="pt-2">
+                Peer support: Receive assistance and support from peers who may
+                have expertise in certain subjects or topics.
+              </p>
             </div>
           </div>
           <div className="collapse collapse-plus bg-base-200">
             <input type="radio" name="my-accordion-3" />
             <div className="collapse-title text-xl font-medium">
-              Click to open this one and close others
+              Can we mark each other assignment?
             </div>
             <div className="collapse-content">
-              <p>hello</p>
+              <p>Thats what it is! Let's Start.</p>
+            </div>
+          </div>
+          <div className="collapse collapse-plus bg-base-200">
+            <input type="radio" name="my-accordion-3" />
+            <div className="collapse-title text-xl font-medium">
+              Can we create assignment?
+            </div>
+            <div className="collapse-content">
+              <p>Yes! Give it a try.</p>
+            </div>
+          </div>
+          <div className="collapse collapse-plus bg-base-200">
+            <input type="radio" name="my-accordion-3" />
+            <div className="collapse-title text-xl font-medium">
+              Can we mark each other assignment?
+            </div>
+            <div className="collapse-content">
+              <p>Thats what it is! Let's Start.</p>
             </div>
           </div>
         </div>
