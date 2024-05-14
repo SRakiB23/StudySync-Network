@@ -16,6 +16,8 @@ StudySync Network is a web application designed to facilitate group study and as
 
 - Displays all assignments with filtering options based on difficulty level
 - Allows users to delete, update, and view assignments
+- View assignments allows user to take the assignment
+- Creator of the assignment can not take the assignment
 - Only Delete is supported for creator of the assignment
 - Supports submission of assignments with PDF/doc links and notes
 
