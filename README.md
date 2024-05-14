@@ -4,11 +4,11 @@
 
 StudySync Network is a web application designed to facilitate group study and assignment management for students and educators. It provides a platform for creating, submitting, and managing assignments efficiently.
 
-**Features**
+# Features
 
 - Navbar with dynamic links based on user authentication status
 
-**Create Assignment Page (Private): **
+**Create Assignment Page (Private):**
 
 - Form for creating assignments with various parameters including title, description, marks, due date, etc.Success message upon successful assignment creation
 
