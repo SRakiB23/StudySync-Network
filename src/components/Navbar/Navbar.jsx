@@ -36,12 +36,6 @@ const Navbar = () => {
       <li>
         <NavLink to="/pendingassignment">Pending Assignment</NavLink>
       </li>
-      <li>
-        <NavLink to="/login">Login</NavLink>
-      </li>
-      <li>
-        <NavLink to="/register">Registration</NavLink>
-      </li>
     </>
   );
 
@@ -103,11 +97,10 @@ const Navbar = () => {
         </div>
         <div className="navbar-center hidden md:flex">
           <ul className="menu menu-horizontal px-1">
-            {" "}
             {user ? navLinks : navLinks2}
           </ul>
         </div>
-        <div>
+        <div className="md:pl-8">
           <label className="flex cursor-pointer gap-2">
             <svg
               xmlns="http://www.w3.org/2000/svg"

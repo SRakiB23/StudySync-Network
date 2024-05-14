@@ -10,7 +10,7 @@ const PendingAssignmentRow = ({ assignment }) => {
       <td>{name}</td>
       <th>
         <Link to={`/pendingassignmentmarking/${assignment._id}`}>
-          <button className="btn btn-ghost btn-xs font-bold bg-red-300 px-6">
+          <button className="btn btn-ghost btn-md font-bold text-white bg-blue-700">
             Give Mark
           </button>
         </Link>

@@ -8,24 +8,26 @@ function TakeAssignment() {
   const { user, displayName } = useContext(AuthContext);
   const { _id } = useParams();
   const [assignments, setAssignments] = useState(null);
+  const [submitassignments, setsubmitAssignments] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Fetch art details using the _id parameter
+    // Fetch details using the _id parameter
     setLoading(true);
     fetch(`https://studysync-network.vercel.app/assignments/${_id}`)
       .then((response) => response.json())
       .then((data) => {
         setAssignments(data);
+        // console.log(data);
         setLoading(false);
       })
-      .catch((error) => console.error("Error fetching art details:", error));
+      .catch((error) =>
+        console.error("Error fetching Assignment details:", error)
+      );
   }, [_id]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
-    toast.success("Assignment submitted successfully");
 
     const form = event.target;
     const email = form.email.value;
@@ -38,7 +40,7 @@ function TakeAssignment() {
       note,
       email,
       title,
-      name: assignments.name,
+      name: user.displayName,
       description: assignments.description,
       marks: assignments.marks,
       dueDate: assignments.dueDate,
@@ -48,26 +50,40 @@ function TakeAssignment() {
       obtained_marks: "",
       submitted_by: user.email,
     };
-    // console.log(submittedAssignment);
+    console.log(submittedAssignment);
 
-    //send data to server
-    fetch("https://studysync-network.vercel.app/submitassignments", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(submittedAssignment),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.insertedID) {
-          toast.success(
-            "Submitted!",
-            "Your Assignments is Submitted!",
-            "success"
-          );
-        }
+    if (assignments?.email === user?.email) {
+      Swal.fire({
+        title: "Creator Can Not Submit Assignment!!!!",
+        icon: "error",
+        confirmButtonText: "Ok!! Sorry!!",
+      }).then(() => {
+        window.location.href = "/";
       });
+    } else {
+      //send data to server
+      fetch("https://studysync-network.vercel.app/submitassignments", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(submittedAssignment),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          if (data.insertedId) {
+            console.log("hoise");
+            Swal.fire({
+              title: "Assignment Submitted Successfully",
+              icon: "success",
+              confirmButtonText: "Ok",
+            }).then(() => {
+              window.location.href = "/";
+            });
+          }
+        });
+    }
   };
 
   return (
@@ -87,7 +103,7 @@ function TakeAssignment() {
                     </label>
                     <br />
                     <input
-                      className="border border-slate-400 w-full py-2 px-4 mt-4"
+                      className="border border-slate-400 w-full rounded-xl py-2 px-4 mt-4"
                       type="text"
                       id="document"
                       name="documentLink"
@@ -113,7 +129,7 @@ function TakeAssignment() {
                   </div>
                 </div>
 
-                <div className="bg-blue-600 px-10 py-2 rounded-2xl mb-6">
+                <div className="bg-cyan-600 px-10 py-2 rounded-2xl mb-6">
                   <div className="mb-6">
                     <div className="form-control md:w-full">
                       <label className="label">
@@ -153,7 +169,7 @@ function TakeAssignment() {
               </div>
               <div>
                 <input
-                  className="btn p-4 mb-3 bg-green-500 w-full"
+                  className="btn p-4 mb-3 bg-amber-200 w-full"
                   type="submit"
                   value="Submit"
                 />

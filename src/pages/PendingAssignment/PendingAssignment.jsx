@@ -56,9 +56,7 @@ const PendingAssignment = () => {
             </tbody>
           </table>
         ) : (
-          <p className="text-center font-bold text-xl flex items-center gap-2">
-            <MdPending /> No pending assignments....
-          </p>
+          ""
         )}
       </div>
     </div>

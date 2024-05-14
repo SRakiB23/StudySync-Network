@@ -6,6 +6,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { FaCalendar } from "react-icons/fa6";
 import { FaCalendarAlt } from "react-icons/fa";
+import Swal from "sweetalert2";
 
 function CreateAssignment() {
   const { user, displayName } = useContext(AuthContext);
@@ -17,7 +18,7 @@ function CreateAssignment() {
   const handleAddAssignement = (event) => {
     event.preventDefault();
 
-    toast.success("Assignment created successfully");
+    Swal.fire("Assignment created successfully");
 
     const form = event.target;
     const title = form.title.value;
@@ -53,21 +54,27 @@ function CreateAssignment() {
       .then((data) => {
         // console.log(data);
         if (data.insertedID) {
-          toast.success("Successfully Added");
+          Swal.fire(
+            "Created!!",
+            "You Have Successfully Created the Assignment!",
+            "success"
+          ).then(() => {
+            window.location.href = "/assignments";
+          });
         }
       });
   };
 
   return (
     <div>
-      <div>
-        <div
-          className="bg-cover bg-center min-h-screen max-w-7xl mx-auto px-4 py-8 sm:px-6 lg:px-8"
-          style={{
-            backgroundImage:
-              "url('https://i.ibb.co/LYDnmF5/blob-scene-haikei.png')",
-          }}
-        >
+      <div
+        className="bg-cover bg-center min-h-screen mx-auto px-4 py-8 sm:px-6 lg:px-8"
+        style={{
+          backgroundImage:
+            "url('https://i.ibb.co/LYDnmF5/blob-scene-haikei.png')",
+        }}
+      >
+        <div>
           <div className="px-20 py-10 max-w-7xl mx-auto">
             <h2 className="text-4xl font-bold text-center text-white pb-10">
               Create Assignment
@@ -82,6 +89,7 @@ function CreateAssignment() {
                   <label className="input-group">
                     <input
                       type="text"
+                      required
                       name="title"
                       placeholder="Title"
                       className="input input-bordered md:w-full"
@@ -115,9 +123,10 @@ function CreateAssignment() {
                   </label>
                   <label className="input-group">
                     <input
-                      type="text"
+                      type="number"
                       name="marks"
                       placeholder="Marks"
+                      required
                       className="input input-bordered md:w-full"
                     />
                   </label>
@@ -131,6 +140,7 @@ function CreateAssignment() {
                       <DatePicker
                         selected={dueDate}
                         name="dueDate"
+                        required
                         onChange={handleDateChange}
                         placeholderText="Due Date"
                         className="input input-bordered pl-12"
@@ -158,11 +168,14 @@ function CreateAssignment() {
               {/*photoUrl*/}
               <div className="form-control w-full mb-6">
                 <label className="label ">
-                  <span className="label-text text-white">Photo URL</span>
+                  <span className="label-text text-white">
+                    Thumbnail Image URL
+                  </span>
                 </label>
                 <label className="input-group">
                   <input
                     type="text"
+                    required
                     name="photo"
                     placeholder="PhotoURL"
                     className="input input-bordered md:w-full"

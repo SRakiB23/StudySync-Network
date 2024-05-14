@@ -61,7 +61,13 @@ function UpdateAssignment() {
       .then((data) => {
         // console.log(data);
         if (data.modifiedCount > 0) {
-          Swal.fire("Updated!", "Your Assignments Has Been Updated", "success");
+          Swal.fire(
+            "Updated!",
+            "Your Assignments Has Been Updated",
+            "success"
+          ).then(() => {
+            window.location.href = "/assignments";
+          });
         }
       });
   };

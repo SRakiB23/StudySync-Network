@@ -12,8 +12,8 @@ const AttemptedAssignment = () => {
   const [assignmentDetails, setAssignmentDetails] = useState(null);
 
   useEffect(() => {
+    setLoading(true);
     if (user?.email) {
-      setLoading(true);
       fetch(
         `https://studysync-network.vercel.app/submitassignments/submitted_by/${email}`
       )
@@ -33,13 +33,13 @@ const AttemptedAssignment = () => {
   }
 
   return (
-    <div>
+    <div className="bg-sky-200">
       <div>
-        <h2 className="text-center font-bold text-4xl py-4">
-          Assignment Details
+        <h2 className="text-center font-bold text-4xl py-6">
+          My Attempted Assignments
         </h2>
       </div>
-      <div className="hero bg-base-200 py-5 text-lg md:py-20">
+      <div className="hero py-5 text-lg md:py-20">
         {/* Render assignment details */}
         <div className="container mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-6">
@@ -47,21 +47,22 @@ const AttemptedAssignment = () => {
               assignmentDetails.map((assignment) => (
                 <div
                   key={assignment?._id}
-                  className="p-6 bg-white rounded-lg shadow-md"
+                  className="p-6 bg-white rounded-lg shadow-md text-black"
                 >
                   <h3 className="text-xl font-semibold">
-                    Title:<span className="font-bold">{assignment?.title}</span>
+                    Title:
+                    <span className="font-bold pl-2">{assignment?.title}</span>
                   </h3>
                   <p className="mt-2">
                     Status:
-                    <span className="text-red-500 font-bold pl-1">
+                    <span className="text-red-500 font-bold pl-2">
                       {assignment?.status}
                     </span>
                   </p>
                   <p className="mt-2">
                     Assignment Marks: <span>{assignment?.marks}</span>
                   </p>
-                  <p className="mt-2">
+                  <p className="mt-2 font-bold">
                     Obtained Marks: <span>{assignment?.obtained_marks}</span>
                   </p>
                   <p className="mt-2">
@@ -78,7 +79,7 @@ const AttemptedAssignment = () => {
                 </div>
               ))
             ) : (
-              <p>No Assignment Found</p>
+              <p></p>
             )}
           </div>
         </div>

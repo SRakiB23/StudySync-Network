@@ -61,10 +61,16 @@ const AuthProvider = ({ children }) => {
     setLoading(true);
     return signOut(auth)
       .then((result) => {
-        // console.log(result);
+        // Clear the token from the cookie
+        document.cookie =
+          "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        window.location.href = "/login";
       })
       .catch((error) => {
         // console.log(error);
+      })
+      .finally(() => {
+        setLoading(false);
       });
   };
 
@@ -72,7 +78,7 @@ const AuthProvider = ({ children }) => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
       const userEmail = currentUser?.email || user?.email;
       const loggedUser = { email: userEmail };
-      // console.log("user in the auth state changed");
+      console.log("user in the auth state changed");
       setUser(currentUser);
       setLoading(false);
       //if user existes then issue a token
@@ -83,14 +89,6 @@ const AuthProvider = ({ children }) => {
           })
           .then((res) => {
             // console.log("token response:", res.data);
-          });
-      } else {
-        axios
-          .post("https://studysync-network.vercel.app/logout", loggedUser, {
-            withCredentials: true,
-          })
-          .then((res) => {
-            // console.log(res.data);
           });
       }
     });

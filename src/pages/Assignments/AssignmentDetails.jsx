@@ -18,25 +18,22 @@ const AssignmentDetails = () => {
   }, [_id]);
 
   return (
-    <div className="bg-sky-200">
+    <div className="bg-cyan-100 py-6">
       <div className="max-w-7xl mx-auto text-xl">
         <img src="" alt="" />
-        <h2 className="text-center font-bold text-5xl text-black bg-red-400 rounded-xl py-4 mb-4">
+        <h2 className="text-center font-bold text-5xl text-black rounded-xl py-4 mb-4">
           Assignment Details
         </h2>
         {assignmentDetails && (
-          <div className="">
-            <div className="md:w-[350px] h-1/2 mx-auto flex items-center">
-              <img src={assignmentDetails.photo} alt="" className="mx-auto" />
-            </div>
+          <div className="md:flex items-center gap-10">
             <div>
-              <p className="p-4 text-4xl font-bold text-center">
+              <p className="p-4 text-4xl font-bold">
                 {assignmentDetails.title}
               </p>
-              <p className="p-4 text-2xl border border-black">
+              <p className="p-4 text-2xl">
                 Description: {assignmentDetails.description}
               </p>
-              <div className="md:flex justify-between border border-black">
+              <div className="md:flex justify-between">
                 <p className="p-4 text-2xl">
                   Difficulty Level:{" "}
                   <span className="text-red-500 font-bold">
@@ -45,28 +42,32 @@ const AssignmentDetails = () => {
                 </p>
                 <p className="p-4 text-2xl">
                   Due Date:
-                  <span className="text-red-500 font-bold">
+                  <span className="text-blue-700 pl-2 font-bold">
                     {assignmentDetails.dueDate}
                   </span>
                 </p>
               </div>
-              <p className="p-4 text-2xl border border-black">
+              <p className="p-4 text-2xl">
                 Marks:
-                <span className="text-red-500 font-bold text-2xl px-2">
+                <span className="text-orange-700 font-bold text-2xl px-2">
                   {assignmentDetails.marks}
                 </span>
               </p>
-
-              <div className="text-center py-4">
-                <Link to={`/takeassignment/${_id}`}>
-                  <button className="btn bg-green-500 p-4">
-                    Take Assignment
-                  </button>
-                </Link>
+            </div>
+            <div className="avatar">
+              <div className="w-96 rounded-full">
+                <img src={assignmentDetails.photo} />
               </div>
             </div>
           </div>
         )}
+        <div className="text-center py-4">
+          <Link to={`/takeassignment/${_id}`}>
+            <button className="btn bg-sky-500 border-2 p-4">
+              Take Assignment
+            </button>
+          </Link>
+        </div>
       </div>
     </div>
     // </div>

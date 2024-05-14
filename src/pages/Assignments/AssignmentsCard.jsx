@@ -29,7 +29,7 @@ function AssignmentsCard({ assignment, assignments, setAssignments }) {
             .then((data) => {
               // console.log(data);
               if (data.deletedCount > 0) {
-                Swal.fire("Deleted!", "Your Arts Has Been Deleted", "Sucess");
+                Swal.fire("Deleted!", "Your Arts Has Been Deleted", "Success");
                 const remaining = assignments.filter(
                   (assignment) => assignment._id !== _id
                 );
@@ -53,20 +53,25 @@ function AssignmentsCard({ assignment, assignments, setAssignments }) {
       <div>
         <div>
           <div className="card card-compact bg-slate-50">
-            <figure className="h-64 p-2">
+            <figure className="h-60 py-2">
               <img src={photo} alt="home" />
             </figure>
-            <div className="card-body">
+            <div className="card-body h-72 w-full">
               <h2 className="card-title font-bold">{title}</h2>
               <div></div>
               <hr />
-              <p>Description: {description}</p>
-              <p>Difficulty: {difficulty}</p>
+              <p>
+                <span className="font-bold">Description:</span> {description}
+              </p>
+              <p>
+                <span className="font-bold">Difficulty:</span>
+                <span className="text-red-500 text-lg pl-2">{difficulty}</span>
+              </p>
               <div className="flex justify-between py-4">
                 <div className="card-actions justify-center">
                   <Link to={`/assignmentdetails/${_id}`}>
                     {
-                      <button className="btn bg-yellow-400 text-lg">
+                      <button className="btn bg-purple-300 text-lg">
                         View
                       </button>
                     }
@@ -75,7 +80,7 @@ function AssignmentsCard({ assignment, assignments, setAssignments }) {
                 <div className="card-actions justify-center">
                   <Link to={`/updateassignment/${assignment._id}`}>
                     {
-                      <button className="btn bg-green-600 text-lg">
+                      <button className="btn bg-blue-300 text-lg">
                         Update
                       </button>
                     }
@@ -85,7 +90,7 @@ function AssignmentsCard({ assignment, assignments, setAssignments }) {
                   {
                     <button
                       onClick={() => handleDelete(_id)}
-                      className="btn bg-red-500 text-lg"
+                      className="btn bg-red-400 text-lg"
                     >
                       Delete
                     </button>

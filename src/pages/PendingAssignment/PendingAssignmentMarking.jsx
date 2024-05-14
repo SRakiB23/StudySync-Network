@@ -47,31 +47,48 @@ function PendingAssignmentMarking() {
     };
     // console.log(pendingAssingmentMarking);
 
-    //send data to server
-    fetch(`https://studysync-network.vercel.app/submitassignments/${_id}`, {
-      method: "PATCH",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(pendingAssingmentMarking),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        // console.log(data);
-        if (data.modifiedCount > 0) {
-          Swal.fire("Marked!!", "You Have Marked the Assignment!", "success");
-        }
+    if (user.email === assignments.submitted_by) {
+      Swal.fire({
+        title: "You Can Not Mark your Submitted Assignment!!!!",
+        icon: "error",
+        confirmButtonText: "Oh! Okay",
+      }).then(() => {
+        window.location.href = "/";
       });
+    } else {
+      fetch(`https://studysync-network.vercel.app/submitassignments/${_id}`, {
+        method: "PATCH",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(pendingAssingmentMarking),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          // console.log(data);
+          if (data.modifiedCount > 0) {
+            Swal.fire(
+              "Marked!!",
+              "You Have Marked the Assignment!",
+              "success"
+            ).then(() => {
+              window.location.href = "/";
+            });
+          }
+        });
+    }
+
+    //send data to server
   };
 
   return (
-    <div className="bg-gradient-to-r from-green-400 to-white ...">
+    <div className="bg-gradient-to-r from-cyan-800 to-cyan-100 ...">
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-center font-bold text-4xl py-5">
+        <h2 className="text-center font-bold text-4xl py-8">
           Assignment Marking
         </h2>
         <div className="md:flex justify-between mb-8">
-          <div className="p-10 bg-sky-300 rounded-lg">
+          <div className="p-10 bg-blue-200 rounded-lg">
             <p className="pb-4">
               Assignment Title:
               <span className="font-bold pl-10">{assignments?.title}</span>
@@ -111,7 +128,7 @@ function PendingAssignmentMarking() {
           </div>
 
           <form onSubmit={handleSubmit}>
-            <div className="bg-green-400 p-4 rounded-xl">
+            <div className="bg-cyan-600 p-4 rounded-xl">
               <div className="mb-6">
                 <div className="form-control md:w-full">
                   <label className="label">
