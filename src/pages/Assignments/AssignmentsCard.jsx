@@ -29,7 +29,11 @@ function AssignmentsCard({ assignment, assignments, setAssignments }) {
             .then((data) => {
               // console.log(data);
               if (data.deletedCount > 0) {
-                Swal.fire("Deleted!", "Your Arts Has Been Deleted", "Success");
+                Swal.fire(
+                  "Deleted!",
+                  "Your Assignment Has Been Deleted",
+                  "Success"
+                );
                 const remaining = assignments.filter(
                   (assignment) => assignment._id !== _id
                 );

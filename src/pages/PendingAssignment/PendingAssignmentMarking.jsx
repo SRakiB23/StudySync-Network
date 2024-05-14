@@ -10,7 +10,7 @@ function PendingAssignmentMarking() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Fetch art details using the _id parameter
+    // Fetch details using the _id parameter
     setLoading(true);
     fetch(`https://studysync-network.vercel.app/submitassignments/${_id}`)
       .then((response) => response.json())

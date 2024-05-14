@@ -17,7 +17,7 @@ function UpdateAssignment() {
   };
 
   useEffect(() => {
-    // Fetch art details using the _id parameter
+    // Fetch assignment details using the _id parameter
     setLoading(true);
     fetch(`https://studysync-network.vercel.app/assignments/${_id}`)
       .then((response) => response.json())

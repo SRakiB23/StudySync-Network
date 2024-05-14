@@ -18,8 +18,6 @@ function CreateAssignment() {
   const handleAddAssignement = (event) => {
     event.preventDefault();
 
-    Swal.fire("Assignment created successfully");
-
     const form = event.target;
     const title = form.title.value;
     const description = form.description.value;
@@ -53,12 +51,12 @@ function CreateAssignment() {
       .then((res) => res.json())
       .then((data) => {
         // console.log(data);
-        if (data.insertedID) {
-          Swal.fire(
-            "Created!!",
-            "You Have Successfully Created the Assignment!",
-            "success"
-          ).then(() => {
+        if (data.insertedId) {
+          Swal.fire({
+            title: "Assignment Created Successfully",
+            icon: "success",
+            confirmButtonText: "Ok!",
+          }).then(() => {
             window.location.href = "/assignments";
           });
         }

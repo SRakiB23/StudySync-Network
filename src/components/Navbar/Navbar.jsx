@@ -153,10 +153,7 @@ const Navbar = () => {
               <div tabIndex={0} role="button">
                 <div className="avatar">
                   <div className="w-20 rounded-full">
-                    <img
-                      src={user ? user.photoURL : "no user"}
-                      alt="user profile"
-                    />
+                    <img src={user ? user?.photoURL : ""} alt="user profile" />
                   </div>
                   <ul
                     tabIndex={0}

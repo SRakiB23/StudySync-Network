@@ -24,6 +24,15 @@ function TakeAssignment() {
       .catch((error) =>
         console.error("Error fetching Assignment details:", error)
       );
+    //fetching second data
+    fetch("https://studysync-network.vercel.app/submitassignments")
+      .then((res) => res.json())
+      .then((data) => {
+        setsubmitAssignments(data);
+      })
+      .catch((error) =>
+        console.error("Error fetching submitAssignment details:", error)
+      );
   }, [_id]);
 
   const handleSubmit = (event) => {
@@ -34,6 +43,17 @@ function TakeAssignment() {
     const documentLink = form.documentLink.value;
     const note = form.note.value;
     const title = form.title.value;
+
+    for (const assignment of submitassignments) {
+      if (assignment.email === user.email) {
+        Swal.fire({
+          title: "Assignment Already Submitted!!",
+          icon: "error",
+          confirmButtonText: "Ok!",
+        });
+        return;
+      }
+    }
 
     const submittedAssignment = {
       documentLink,
