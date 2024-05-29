@@ -17,6 +17,7 @@ import PendingAssignment from "./pages/PendingAssignment/PendingAssignment";
 import PendingAssignmentMarking from "./pages/PendingAssignment/PendingAssignmentMarking";
 import AttemptedAssignment from "./pages/AttemptedAssignment/AttemptedAssignment";
 import PrivateRoute from "./routes/PrivateRoute";
+import BlogDetails from "./components/Blogs/BlogDetaills";
 
 const router = createBrowserRouter([
   {
@@ -91,6 +92,10 @@ const router = createBrowserRouter([
             <AttemptedAssignment></AttemptedAssignment>
           </PrivateRoute>
         ),
+      },
+      {
+        path: "/blogs/:id",
+        element: <BlogDetails />,
       },
     ],
   },
