@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import "animate.css";
 
 const BlogDetails = () => {
   const { id } = useParams();
@@ -20,18 +21,21 @@ const BlogDetails = () => {
   }
 
   // Add a null check for the blog object
-  const { title, description, image, date } = blog || {};
+  const { title, description, image, date, writer } = blog || {};
 
   return (
     <div className="max-w-3xl mx-auto p-5">
       <img
         src={image}
         alt={title}
-        className="w-full h-80 object-cover rounded-lg"
+        className="w-full h-80 object-cover rounded-lg animate__animated animate__flipInY"
       />
-      <h2 className="text-3xl font-bold mt-5">{title}</h2>
-      <p className="text-gray-600 mt-2">{description}</p>
-      <span className="text-gray-500 mt-4 block">{date}</span>
+      <div className="flex justify-between items-center py-3">
+        <h2 className="text-3xl font-bold mt-5">{title}</h2>
+        <span className="text-gray-700 mt-4 block">Date: {date}</span>
+      </div>
+      <p className="text-gray-600 mt-2 text-base">{description}</p>
+      <p className="text-gray-900 font-bold mt-2">Writer: {writer}</p>
     </div>
   );
 };

@@ -14,17 +14,19 @@ const BlogList = ({ blogs }) => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 py-6">
       {blogs.map((blog, index) => (
-        <div key={index} className="blog-item p-5 border rounded-lg shadow-lg">
+        <div key={index} className="blog-item p-4 border rounded-lg shadow-lg">
           <img
             src={blog.image}
             alt={blog.title}
-            className="w-full h-48 object-cover rounded-t-lg"
+            className="w-full h-48 object-cover rounded-t-lg animate__animated animate__flipInY"
           />
           <h3 className="text-xl font-semibold mt-4">{blog.title}</h3>
           <p className="text-gray-600 mt-2">
             {trimDescription(blog.description)}
           </p>
-          <span className="text-gray-500 mt-4 block">{blog.date}</span>
+          <span className="text-gray-500 mt-4 block">
+            Published: {blog.date}
+          </span>
           <Link to={`/blogs/${blog.id}`} className="text-blue-500 mt-4 block">
             Read More
           </Link>
